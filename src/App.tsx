@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <InputComponent />
-      <ButtonComponent />
+      <ButtonComponent clickMethod={() => {console.log("hoge")}}/>
     </div>
   );
 }

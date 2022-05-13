@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ButtonComponent() {
+function ButtonComponent(props:any) {
   // Reactのイベントの型（Button用）
   // とりあえず、イベント引数の方はこんな感じ
   const click = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -8,7 +8,7 @@ function ButtonComponent() {
   }
 
   return (
-    <button onClick={click}>ButtonComponent</button>
+    <button onClick={props.clickMethod}>ButtonComponent</button>
   )
 }
 
