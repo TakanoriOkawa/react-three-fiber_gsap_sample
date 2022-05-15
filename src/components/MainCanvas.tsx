@@ -35,44 +35,14 @@ function MainCanvas() {
 // これは子とってきているのではん？
 function Rig() {
   const ref = useRef(null);
-  // const vec = new THREE.Vector3()
   const { camera, mouse } = useThree()
   _camera = camera;
-
-  console.log("aaa",_camera);
-
-  const vec = new THREE.Vector3();
-  // const {
-  //   camera,
-  //   gl: { domElement },
-  // } = useThree();
-
   console.log(camera);
-
-  // useFrame(() => {
-  //   camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
-  // })
-
   return (
     // こちらは単純にコンポーネント内部にあるDOMを設定する
     <group ref={ref}></group>
   )
 }
-
-// function Rig(Props: any) {
-//   // const ref = useRef()
-//   // const vec = new THREE.Vector3()
-//   // const { camera, mouse } = useThree()
-//   // useFrame(() => {
-
-//   // })
-//   return (
-//     <>
-//       {console.log(Props)}
-//       <h1>{Props}</h1>
-//     </>
-//   )
-// }
 
 // これはbutton要素なので、canvasの中には置けない。
 function Button() {
