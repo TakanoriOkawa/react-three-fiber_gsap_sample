@@ -7,8 +7,6 @@ import MainCanvas from './components/MainCanvas';
 function App() {
   return (
     <div id="canvas-container">
-      <InputComponent />
-      <ButtonComponent clickMethod={() => {console.log("hoge")}} />
       <MainCanvas />
     </div>
   );
