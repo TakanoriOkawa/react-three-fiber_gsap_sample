@@ -9,7 +9,6 @@ function App() {
   return (
     <div id="canvas-container">
       <MainCanvas />
-      <Parent></Parent>
     </div>
   );
 }
