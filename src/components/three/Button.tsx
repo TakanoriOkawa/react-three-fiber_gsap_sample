@@ -13,7 +13,7 @@ function Button(props:Props) {
   const changeCameraView = props.changeCameraView;
 
   return (
-    <div onClick={changeCameraView(position)}>Buttonです</div>
+    <div onClick={() => changeCameraView(position)}>Buttonです</div>
   )
 }
 
