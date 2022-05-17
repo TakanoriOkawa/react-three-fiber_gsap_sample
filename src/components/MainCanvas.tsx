@@ -1,51 +1,41 @@
 import * as THREE from 'three'
 import React, { useState,useEffect, useRef } from 'react'
-import {Canvas} from '@react-three/fiber';
+import {Camera,Canvas} from '@react-three/fiber';
 import gsap from 'gsap';
 import BoxGeometry from './three/BoxGeometry';
-import Camera from './three/Camera';
+import CameraComponent from './three/Camera';
 import Button from './three/Button';
 import { viewsPoint } from '../module/cameraPoint';
 
 function MainCanvas() {  
-  // set関数を渡す？
-  const [camera, setCamera] = useState();
-
-  const checkCameraState = () =>{
-    console.log(camera);
-  }
+  const [camera, setCamera] = useState<Camera>();
 
   const changeCameraView = (position:string) =>{
-    console.log("位置を変える");
+    // 一致するものを取り出す。
+    const view = viewsPoint[position];
+    // カメラのpositionオブジェクトに対してアニメーション
+    if(!camera)return;
+
+    gsap.to(camera.position, {
+      duration: view.duration,
+      x: view.x,
+      y: view.y,
+      z: view.z,
+      onComplete: () => {console.log("終了")}
+    })
   }
 
   return (
     <>
     <Canvas>
       <BoxGeometry></BoxGeometry>
-      <Camera setCamera={setCamera}></Camera>
+      <CameraComponent setCamera={setCamera}></CameraComponent>
     </Canvas>
+    <Button position='initial' changeCameraView={changeCameraView}></Button>
     <Button position='left' changeCameraView={changeCameraView}></Button>
+    <Button position='right' changeCameraView={changeCameraView}></Button>
     </>
   )
 }
-
-// これはbutton要素なので、canvasの中には置けない。
-// function Button() {
-//   const anima = () => {
-//     // gsap.to(_camera.position, {
-//     //   duration: 2,
-//     //   y:4,
-//     //   z:10,
-//     //   ease: "power3.inOut",
-//     //   onComplete: () => {
-//     //     console.log("end!!!!!!!!!")
-//     //   }
-//     // })
-//   }
-//   return (
-//     <button onClick={anima}>アニメーション</button>
-//   )
-// }
 
 export default MainCanvas
