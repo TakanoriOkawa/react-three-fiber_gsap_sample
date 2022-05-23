@@ -7,9 +7,13 @@ import Parent from './components/test/Parent';
 
 function App() {
   return (
+    <>
+    <div id="first"></div>
     <div id="canvas-container">
       <MainCanvas />
     </div>
+    <div id="second"></div>
+    </>
   );
 }
 

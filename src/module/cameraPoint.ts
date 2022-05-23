@@ -14,10 +14,10 @@ export const viewsPoint: ViewPosition = {
     duration: 2,
   },
   left: {
-    x: 3,
-    y: 1,
+    x: 0,
+    y: 0,
     z: 2,
-    duration: 2,
+    duration: 1,
   },
   right: {
     x: 0,

@@ -6,24 +6,64 @@ import BoxGeometry from './three/BoxGeometry';
 import CameraComponent from './three/Camera';
 import Button from './three/Button';
 import { viewsPoint } from '../module/cameraPoint';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-function MainCanvas() {  
+function MainCanvas() {
   const [camera, setCamera] = useState<Camera>();
 
-  const changeCameraView = (position:string) =>{
-    // 一致するものを取り出す。
-    const view = viewsPoint[position];
-    // カメラのpositionオブジェクトに対してアニメーション
-    if(!camera)return;
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);  // scrollTriggerの登録
+    ScrollTrigger.defaults({
+      immediateRender: false, 
+      scrub: true,
+    });
+  },[]);
 
-    gsap.to(camera.position, {
-      duration: view.duration,
-      x: view.x,
-      y: view.y,
-      z: view.z,
-      onComplete: () => {console.log("終了")}
-    })
+  const initScrollAnimation = () => {
+    if(!camera) return;
+
+    let timeline = gsap.timeline();
+    timeline.to(camera.position, {
+      y: 1,
+      z: 3,
+      scrollTrigger: {
+        trigger: "#first",
+        start: "top top",
+        markers: true,
+      },
+    });
+    timeline.to(camera.rotation, {
+      y: 1,
+      z: 1,
+      scrollTrigger: {
+        trigger: "#second",
+        start: "top bottom",
+        markers: true,
+      },
+    });
   }
+  // const changeCameraView = (position:string) =>{
+  //   // 一致するものを取り出す。
+  //   const view = viewsPoint[position];
+  //   // カメラのpositionオブジェクトに対してアニメーション
+  //   if(!camera)return;
+  //   gsap.to(camera.position, {
+  //     duration: view.duration,
+  //     x: view.x,
+  //     y: view.y,
+  //     z: view.z,
+  //     onComplete: () => {console.log("終了")}
+  //   })
+  // }
+
+  const returnTop = () => {
+    // 最初のエレメントへ移動
+    const element = document.getElementById("first");
+    if(!element) return;
+    element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  }
+  
+  initScrollAnimation();
 
   return (
     <>
@@ -31,9 +71,11 @@ function MainCanvas() {
       <BoxGeometry></BoxGeometry>
       <CameraComponent setCamera={setCamera}></CameraComponent>
     </Canvas>
-    <Button position='initial' changeCameraView={changeCameraView}></Button>
-    <Button position='left' changeCameraView={changeCameraView}></Button>
-    <Button position='right' changeCameraView={changeCameraView}></Button>
+
+    <div className='buttons'>
+      {/* cameraPointsの数だけループでボタンを作る */}
+      <button onClick={returnTop}>Topへ</button>
+    </div>
     </>
   )
 }
