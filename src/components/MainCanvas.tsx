@@ -3,8 +3,6 @@ import {Camera,Canvas} from '@react-three/fiber';
 import gsap from 'gsap';
 import BoxGeometry from './three/BoxGeometry';
 import CameraComponent from './three/Camera';
-import Button from './three/Button';
-import { viewsPoint, objectPosition} from '../module/cameraPoint';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function MainCanvas() {
