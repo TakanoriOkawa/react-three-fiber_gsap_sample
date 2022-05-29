@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Child from './Child'
+import { Link } from "react-router-dom";
+
+// CSSを読み込み
+import "../../css/router-link.css"
 
 function Parent() {
   // 関数を渡して子のコンポで表示を切り替えている。
@@ -20,6 +24,7 @@ function Parent() {
   return (
     <div>
       <h1>親</h1>
+      <Link className='router-link' to='/'>TOPへ</Link>
       <Child open={open} closeFunc={closeDialog}></Child>
       <button onClick={openDialog}>ダイアログを開ける</button>
     </div>

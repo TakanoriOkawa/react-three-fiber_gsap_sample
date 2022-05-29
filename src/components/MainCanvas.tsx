@@ -3,7 +3,9 @@ import {Camera,Canvas} from '@react-three/fiber';
 import gsap from 'gsap';
 import BoxGeometry from './three/BoxGeometry';
 import CameraComponent from './three/Camera';
+import { objectPosition} from '../module/cameraPoint';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 function MainCanvas() {
   const [camera, setCamera] = useState<Camera>();
@@ -74,6 +76,8 @@ function MainCanvas() {
     <div className='buttons'>
       {/* cameraPointsの数だけループでボタンを作る */}
       <button onClick={returnTop}>Topへ</button>
+
+      <Link to='parent'>セカンドページへ</Link>
     </div>
     </>
   )
