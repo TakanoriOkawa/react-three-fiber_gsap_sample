@@ -1,11 +1,10 @@
-import * as THREE from 'three'
-import React, { useState,useEffect, useRef } from 'react'
+import { useState,useEffect } from 'react'
 import {Camera,Canvas} from '@react-three/fiber';
 import gsap from 'gsap';
 import BoxGeometry from './three/BoxGeometry';
 import CameraComponent from './three/Camera';
 import Button from './three/Button';
-import { viewsPoint } from '../module/cameraPoint';
+import { viewsPoint, objectPosition} from '../module/cameraPoint';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function MainCanvas() {
@@ -68,7 +67,9 @@ function MainCanvas() {
   return (
     <>
     <Canvas>
-      <BoxGeometry></BoxGeometry>
+      { objectPosition.map((data,index) => (
+        <BoxGeometry position={data} key={index}></BoxGeometry>
+      ))}
       <CameraComponent setCamera={setCamera}></CameraComponent>
     </Canvas>
 

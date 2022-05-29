@@ -1,17 +1,21 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Mesh } from 'three'
+import { Mesh, Vector3Tuple } from 'three'
 
-function BoxGeometry() {
+type Props  = {
+  position: Vector3Tuple;
+}
+
+function BoxGeometry(props: Props) {
   const myMesh = useRef<Mesh>(null);  
   useFrame(() => {
     if(!myMesh.current) return;
     myMesh.current.rotation.x += 0.01;
   })
-  
+
   return (
-    <mesh ref={ myMesh }>
-      <boxGeometry args={[2,2,2]}></boxGeometry>
+    <mesh {...props} ref={ myMesh } scale={[1, 0.4, 1]}>
+      <boxGeometry></boxGeometry>
     </mesh>
   )
 }
