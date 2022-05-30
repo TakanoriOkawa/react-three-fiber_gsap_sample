@@ -3,7 +3,7 @@ import Child from './Child'
 import { Link } from "react-router-dom";
 
 // CSSを読み込み
-import "../../css/router-link.css"
+import "../../scss/router-link.css"
 
 function Parent() {
   // 関数を渡して子のコンポで表示を切り替えている。
