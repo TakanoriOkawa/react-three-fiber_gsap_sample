@@ -71,6 +71,8 @@ function MainCanvas() {
         <BoxGeometry position={data} key={index}></BoxGeometry>
       ))}
       <CameraComponent setCamera={setCamera}></CameraComponent>
+      <pointLight position={[10, 10, 10]} />
+      <ambientLight />
     </Canvas>
 
     <div className='buttons'>
