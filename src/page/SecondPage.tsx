@@ -5,7 +5,6 @@ function SecondPage() {
   return (
     <div className='second-page'>
       <h1 className="title">SecondPage</h1>
-
     </div>
   )
 }
