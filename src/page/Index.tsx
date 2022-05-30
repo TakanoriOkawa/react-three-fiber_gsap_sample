@@ -4,7 +4,7 @@ import '../scss/index.scss'
 
 function Index() {
   return (
-    <div>
+    <div className='index-page'>
       <div id="first"></div>
       <div id="canvas-container">
         <MainCanvas />
