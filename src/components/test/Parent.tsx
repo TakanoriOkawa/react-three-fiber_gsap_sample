@@ -19,11 +19,15 @@ function Parent() {
     setOpen(true)
   }
 
+  const hover = () => {
+    console.log("ホバー!!!!");
+  }
+
   // v-ifみたいな挙動が見たいな。
   // 親のstate変数を渡す。これでv-ifみたいな挙動になるのか？
   return (
     <div>
-      <h1>親</h1>
+      <h1 style={{color:'white'}} onPointerOver={() => {hover()}}>親</h1>
       <Link className='router-link' to='/'>TOPへ</Link>
       <Child open={open} closeFunc={closeDialog}></Child>
       <button onClick={openDialog}>ダイアログを開ける</button>
