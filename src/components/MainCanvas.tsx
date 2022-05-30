@@ -79,7 +79,7 @@ function MainCanvas() {
       {/* cameraPointsの数だけループでボタンを作る */}
       <button onClick={returnTop}>Topへ</button>
 
-      <Link to='parent'>セカンドページへ</Link>
+      <Link to='/secondPage'>セカンドページへ</Link>
     </div>
     </>
   )
