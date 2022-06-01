@@ -10,6 +10,7 @@ function Box2() {
   useFrame(() => {
     if(!BoxGroup.current) return;
     BoxGroup.current.rotation.y += 0.01;
+    BoxGroup.current.rotation.z += 0.02;
   })
 
 
