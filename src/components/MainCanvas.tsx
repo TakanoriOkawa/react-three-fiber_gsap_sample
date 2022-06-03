@@ -41,6 +41,7 @@ function MainCanvas() {
       },
     });
   }
+  
   // const changeCameraView = (position:string) =>{
   //   // 一致するものを取り出す。
   //   const view = viewsPoint[position];
